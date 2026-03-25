@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "seasons",
+  "info": {
+    "singularName": "season",
+    "pluralName": "seasons",
+    "displayName": "Season"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "number": {
+      "type": "integer",
+      "required": true
+    },
+    "series": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::series-item.series-item",
+      "inversedBy": "seasons"
+    }
+  }
+}

@@ -12,23 +12,25 @@
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+    "upgrade:dry": "npx @strapi/upgrade latest --dry",
+    "format": "npx prettier . --write"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.39.0",
-    "@strapi/plugin-users-permissions": "5.39.0",
-    "@strapi/strapi": "5.39.0",
-    "better-sqlite3": "12.6.2",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "^6.0.0",
-    "styled-components": "^6.0.0"
+    "@strapi/plugin-cloud": "5.40.0",
+    "@strapi/plugin-users-permissions": "5.40.0",
+    "@strapi/strapi": "5.40.0",
+    "better-sqlite3": "12.8.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.3",
+    "styled-components": "^6.3.12"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "typescript": "^5"
+    "@types/node": "^20.19.37",
+    "@types/react": "^18.3.28",
+    "@types/react-dom": "^18.3.7",
+    "prettier": "3.8.1",
+    "typescript": "^5.9.3"
   },
   "engines": {
     "node": ">=20.0.0 <=24.x.x",

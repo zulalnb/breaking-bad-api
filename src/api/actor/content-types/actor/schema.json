@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "actors",
+  "info": {
+    "singularName": "actor",
+    "pluralName": "actors",
+    "displayName": "Actor"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "character": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::character.character",
+      "inversedBy": "portrayed"
+    }
+  }
+}

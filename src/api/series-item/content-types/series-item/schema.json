@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "series_items",
+  "info": {
+    "singularName": "series-item",
+    "pluralName": "series-items",
+    "displayName": "Series"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "seasons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::season.season",
+      "mappedBy": "series"
+    }
+  }
+}

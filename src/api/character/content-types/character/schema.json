@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "characters",
+  "info": {
+    "singularName": "character",
+    "pluralName": "characters",
+    "displayName": "Character"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "birthday": {
+      "type": "date"
+    },
+    "nickname": {
+      "type": "string"
+    },
+    "portrayed": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::actor.actor",
+      "mappedBy": "character"
+    },
+    "characterStatus": {
+      "type": "enumeration",
+      "required": true,
+      "default": "Alive",
+      "enum": ["Alive", "Presumed dead", "Deceased", "Unknown"]
+    },
+    "img": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images", "files"]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::series-item.series-item"
+    },
+    "appearance": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::season.season"
+    },
+    "better_call_saul_appearance": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::season.season"
+    },
+    "occupation": {
+      "type": "component",
+      "component": "occupation.occupation-item",
+      "repeatable": true
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_occupation_occupation_items",
+  "info": {
+    "displayName": "OccupationItem"
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string",
+      "unique": false
+    }
+  },
+  "config": {}
+}
