@@ -31,12 +31,20 @@
       "type": "enumeration",
       "required": true,
       "default": "Alive",
-      "enum": ["Alive", "Presumed dead", "Deceased", "Unknown"]
+      "enum": [
+        "Alive",
+        "Presumed dead",
+        "Deceased",
+        "Unknown"
+      ]
     },
     "img": {
       "type": "media",
       "multiple": false,
-      "allowedTypes": ["images", "files"]
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     },
     "category": {
       "type": "relation",
@@ -57,6 +65,12 @@
       "type": "component",
       "component": "occupation.occupation-item",
       "repeatable": true
+    },
+    "quotes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::quote.quote",
+      "mappedBy": "author"
     }
   }
 }

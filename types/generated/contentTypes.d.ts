@@ -502,6 +502,7 @@ export interface ApiCharacterCharacter extends Struct.CollectionTypeSchema {
     occupation: Schema.Attribute.Component<"occupation.occupation-item", true>;
     portrayed: Schema.Attribute.Relation<"oneToOne", "api::actor.actor">;
     publishedAt: Schema.Attribute.DateTime;
+    quotes: Schema.Attribute.Relation<"oneToMany", "api::quote.quote">;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -519,7 +520,7 @@ export interface ApiQuoteQuote extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    author: Schema.Attribute.Relation<"oneToOne", "api::character.character">;
+    author: Schema.Attribute.Relation<"manyToOne", "api::character.character">;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -527,7 +528,7 @@ export interface ApiQuoteQuote extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<"oneToMany", "api::quote.quote"> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    quote: Schema.Attribute.String & Schema.Attribute.Required;
+    quote: Schema.Attribute.Text & Schema.Attribute.Required;
     series: Schema.Attribute.Relation<
       "oneToOne",
       "api::series-item.series-item"

@@ -12,13 +12,14 @@
   "pluginOptions": {},
   "attributes": {
     "quote": {
-      "type": "string",
+      "type": "text",
       "required": true
     },
     "author": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::character.character"
+      "relation": "manyToOne",
+      "target": "api::character.character",
+      "inversedBy": "quotes"
     },
     "series": {
       "type": "relation",
