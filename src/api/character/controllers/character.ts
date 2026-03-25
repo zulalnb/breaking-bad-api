@@ -133,5 +133,52 @@ export default factories.createCoreController(
 
       return shaped;
     },
+    async findOne(ctx) {
+      const base_url = `${ctx.protocol}://${ctx.host}`;
+
+      const character = await strapi
+        .documents("api::character.character")
+        .findOne({
+          documentId: ctx.params.id,
+          status: "published",
+          fields: ["name", "birthday", "nickname", "characterStatus"],
+          populate: {
+            category: {
+              fields: ["name"],
+            },
+            appearance: {
+              fields: ["number"],
+            },
+            better_call_saul_appearance: {
+              fields: ["number"],
+            },
+            portrayed: { fields: ["name"] },
+            occupation: true,
+            img: { fields: ["url"] },
+          },
+        });
+
+      if (!character) {
+        return ctx.notFound();
+      }
+
+      return {
+        char_id: character.documentId,
+        name: character.name,
+        birthday: character.birthday ?? "Unknown",
+        occupation: character.occupation.map((occ) => occ.value),
+        img: character.img
+          ? `${base_url}${character.img.url}`
+          : `${base_url}/uploads/placeholder_image_blue_landscape_455db0de45.png`,
+        status: character.characterStatus,
+        nickname: character.nickname ?? "Unknown",
+        appearance: character.appearance.map((season) => season.number),
+        portrayed: character.portrayed?.name ?? "Unknown",
+        category: character.category.map((cat) => cat.name),
+        better_call_saul_appearance: character.better_call_saul_appearance.map(
+          (season) => season.number,
+        ),
+      };
+    },
   }),
 );
