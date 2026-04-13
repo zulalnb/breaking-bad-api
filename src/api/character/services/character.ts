@@ -15,8 +15,7 @@ export default factories.createCoreService(
         .findMany({
           status: "published",
           filters,
-          pagination,
-          sort: "updatedAt:asc",
+          ...pagination,
           fields: [
             "name",
             "birthday",
@@ -32,8 +31,6 @@ export default factories.createCoreService(
             img: { fields: ["url"] },
           },
         });
-
-      console.log(characters);
 
       return characters.map((char: any) => this.shapeCharacter(char, baseUrl));
     },

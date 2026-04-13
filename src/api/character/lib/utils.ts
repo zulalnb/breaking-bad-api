@@ -1,4 +1,3 @@
-// Beklenen ham query yapısı
 interface RawCharacterQuery {
   name?: string;
   category?: string;
@@ -6,7 +5,6 @@ interface RawCharacterQuery {
   offset?: string;
 }
 
-// Fonksiyonun döndüreceği temizlenmiş yapı
 export interface ParsedCharacterQuery {
   filters: {
     name?: { $contains: string };
