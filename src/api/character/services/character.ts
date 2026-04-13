@@ -16,16 +16,24 @@ export default factories.createCoreService(
           status: "published",
           filters,
           pagination,
-          fields: ["name", "birthday", "nickname", "characterStatus"],
+          sort: "updatedAt:asc",
+          fields: [
+            "name",
+            "birthday",
+            "nickname",
+            "characterStatus",
+            "occupation",
+          ],
           populate: {
             category: { fields: ["name"] },
             appearance: { fields: ["number"] },
             better_call_saul_appearance: { fields: ["number"] },
             portrayed: { fields: ["name"] },
-            occupation: true,
             img: { fields: ["url"] },
           },
         });
+
+      console.log(characters);
 
       return characters.map((char: any) => this.shapeCharacter(char, baseUrl));
     },
@@ -36,13 +44,18 @@ export default factories.createCoreService(
         .findOne({
           documentId,
           status: "published",
-          fields: ["name", "birthday", "nickname", "characterStatus"],
+          fields: [
+            "name",
+            "birthday",
+            "nickname",
+            "characterStatus",
+            "occupation",
+          ],
           populate: {
             category: { fields: ["name"] },
             appearance: { fields: ["number"] },
             better_call_saul_appearance: { fields: ["number"] },
             portrayed: { fields: ["name"] },
-            occupation: true,
             img: { fields: ["url"] },
           },
         });
@@ -55,7 +68,7 @@ export default factories.createCoreService(
         char_id: char.documentId,
         name: char.name,
         birthday: char.birthday ?? "Unknown",
-        occupation: char.occupation?.map((occ: any) => occ.value) || [],
+        occupation: char.occupation ? char.occupation.split("\n") : ["Unknown"],
         img: char.img
           ? `${baseUrl}${char.img.url}`
           : `${baseUrl}/uploads/placeholder_image_blue_landscape_455db0de45.png`,

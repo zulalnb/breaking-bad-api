@@ -499,7 +499,7 @@ export interface ApiCharacterCharacter extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     nickname: Schema.Attribute.String;
-    occupation: Schema.Attribute.Component<"occupation.occupation-item", true>;
+    occupation: Schema.Attribute.Text;
     portrayed: Schema.Attribute.Relation<"oneToOne", "api::actor.actor">;
     publishedAt: Schema.Attribute.DateTime;
     quotes: Schema.Attribute.Relation<"oneToMany", "api::quote.quote">;

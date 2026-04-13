@@ -62,9 +62,7 @@
       "target": "api::season.season"
     },
     "occupation": {
-      "type": "component",
-      "component": "occupation.occupation-item",
-      "repeatable": true
+      "type": "text"
     },
     "quotes": {
       "type": "relation",
